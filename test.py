@@ -12,7 +12,7 @@ now = '%04d%02d%02d%02d%02d%02d' % (time.year, time.month, time.day, time.hour, 
 f = open('%s.result.txt' % now, 'w')
 
 
-def read(base_url, base_no, jsessionid, debug=False, isWrite=False):
+def read(base_url, base_no, jsessionid, isWrite=False, debug=False):
     html = requests.get(base_url + str(base_no), cookies={
         'JSESSIONID': jsessionid
     }).text
