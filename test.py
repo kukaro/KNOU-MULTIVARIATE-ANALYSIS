@@ -29,9 +29,9 @@ def f(base_url, base_no, jsessionid, debug=False):
 # f(base_url, base_no, jsessionid, True)
 i = 0
 while base_no - i >= 0:
+    print('#' * 10 + str(base_no - i))
     info = f(base_url, base_no - i, jsessionid)
     if info['writer'] == '김성수':
-        print('#' * 10 + str(base_no - i))
         print('작성자 : ' + info['writer'])
         print('제목 : ' + info['title'])
         print('파일 : ' + str(info['files']))
