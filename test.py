@@ -29,7 +29,7 @@ def read(base_url, base_no, jsessionid, isWrite=False, keyword='NONE', debug=Fal
         print('제목 : ' + title)
         print('날짜 : ' + date)
         print('파일 : ' + str(files))
-    f.write('#' * 10 + str(base_no - i) + '\n')
+    f.write('#' * 10 + str(base_no) + '\n')
     if isWrite and keyword == writer:
         f.write('작성자 : ' + writer + '\n')
         f.write('제목 : ' + title + '\n')
@@ -41,8 +41,8 @@ def read(base_url, base_no, jsessionid, isWrite=False, keyword='NONE', debug=Fal
 # read(base_url, base_no, jsessionid, True)
 i = 0
 while base_no + i >= 0:
-    print('#' * 10 + str(base_no - i))
-    info = read(base_url, base_no - i, jsessionid, True, '김성수')
+    print('#' * 10 + str(base_no + i))
+    info = read(base_url, base_no + i, jsessionid, True, '김성수')
     print('날짜 : ' + info['date'])
     if info['writer'] == '김성수':
         print('작성자 : ' + info['writer'])
