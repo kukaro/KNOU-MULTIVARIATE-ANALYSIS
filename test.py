@@ -12,7 +12,7 @@ now = '%04d%02d%02d%02d%02d%02d' % (time.year, time.month, time.day, time.hour, 
 f = open('%s.result.txt' % now, 'w')
 
 
-def read(base_url, base_no, jsessionid, isWrite=False, debug=False):
+def read(base_url, base_no, jsessionid, isWrite=False, keyword='NONE', debug=False):
     html = requests.get(base_url + str(base_no), cookies={
         'JSESSIONID': jsessionid
     }).text
@@ -29,7 +29,8 @@ def read(base_url, base_no, jsessionid, isWrite=False, debug=False):
         print('제목 : ' + title)
         print('날짜 : ' + date)
         print('파일 : ' + str(files))
-    if isWrite:
+    f.write('#' * 10 + str(base_no - i) + '\n')
+    if isWrite and keyword == writer:
         f.write('작성자 : ' + writer + '\n')
         f.write('제목 : ' + title + '\n')
         f.write('날짜 : ' + date + '\n')
@@ -41,7 +42,7 @@ def read(base_url, base_no, jsessionid, isWrite=False, debug=False):
 i = 0
 while base_no + i >= 0:
     print('#' * 10 + str(base_no - i))
-    info = read(base_url, base_no - i, jsessionid, True)
+    info = read(base_url, base_no - i, jsessionid, True, '김성수')
     print('날짜 : ' + info['date'])
     if info['writer'] == '김성수':
         print('작성자 : ' + info['writer'])
