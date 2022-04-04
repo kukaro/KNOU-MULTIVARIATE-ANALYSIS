@@ -14,3 +14,10 @@ hep.pca
 
 hep.pca.summary <- summary(hep.pca)
 hep.pca.summary
+
+hep.pca.summary$sdev[hep.pca.summary$sdev >= 1]
+
+var <- (hep.pca.summary$sde[hep.pca.summary$sdev >= 1])^2 / sum(hep.pca.summary$sdev^2)
+var
+
+hep.pca.summary$sdev^2
